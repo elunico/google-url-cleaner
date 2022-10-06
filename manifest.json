@@ -1,0 +1,37 @@
+{
+  "name": "Google™ URL Cleaner",
+  "version": "1.0.0",
+  "manifest_version": 3,
+  "description": "An extension to remove all the cruft from a copied Google™ URL",
+  "homepage_url": "http://eluni.co",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "default_locale": "en",
+  "action": {
+    "default_icon": "icons/icon19.png",
+    "default_title": "Link Cleaner",
+    "default_popup": "src/browser_action/browser_action.html"
+  },
+  "permissions": [
+    "clipboardRead",
+    "clipboardWrite",
+    "tabs"
+  ],
+
+  "content_scripts": [
+    {
+      "matches": [
+        "https://*.google.com/*"
+      ],
+      "js": [
+        "src/inject/inject.js"
+      ],
+      "exclude_matches": [
+        "https://accounts.google.com/*"
+      ]
+    }
+  ]
+}
